@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
@@ -8,6 +9,7 @@ module.exports = {
         filename: 'bundle.js',
         libraryTarget: "umd",
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -20,8 +22,27 @@ module.exports = {
                     }
                 }    
             },
-            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-
+            { test: /\.js$/, 
+                exclude: /node_modules/, 
+                loader: "babel-loader" 
+            },
+            {
+                test: /\.css$/i,
+                exclude: /\.module\.css$/i,
+                use: ['style-loader', 'css-loader'],
+              },
+            {
+                test: /\.module\.scss$/i,
+                use: ['style-loader', {
+                    loader: 'css-loader',
+                    options: {
+                        modules: true,
+                        importLoaders: 1
+                    }
+                },
+                'sass-loader',
+            ],  
+              },
         ]
     }
 }
