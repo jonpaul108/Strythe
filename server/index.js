@@ -13,5 +13,7 @@ app.get('/home', (req, res) => {
 app.listen(port, (err) => {
     if (err) {
         console.log('err: ', err);
+    } else {
+        console.log('running on port ' + port);
     }
 });

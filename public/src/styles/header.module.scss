@@ -1,0 +1,19 @@
+.headerContainer {
+    width: 100%;
+    min-height: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+
+}
+
+.logo {
+    min-height: 3em;
+    min-width: 3em;
+}
+
+.generalMenu, .generalMenuBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
